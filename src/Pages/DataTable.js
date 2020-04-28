@@ -28,6 +28,7 @@ export default class DataTable extends Component {
             <div>
                 <Navbar></Navbar>
                 <HotTable
+                    style={{"zIndex": "-1"}}
                     id="hot"
                     data={this.props.location.state.CsvFile}
                     colHeaders={true}
