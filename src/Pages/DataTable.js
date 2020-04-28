@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { HotTable } from '@handsontable/react';
-
+import Handsontable from 'handsontable';
 
 export default class DataTable extends Component {
     componentDidMount = () => {
