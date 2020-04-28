@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { HotTable } from '@handsontable/react';
-
+import Navbar from './Navbar'
 
 export default class DataTable extends Component {
 
@@ -20,12 +20,13 @@ export default class DataTable extends Component {
             if (isNaN(val)) {
                 val = data[0][keys[i]]
             }
-            
         }
     }
+
     render() {
         return (
             <div>
+                <Navbar></Navbar>
                 <HotTable
                     id="hot"
                     data={this.props.location.state.CsvFile}
