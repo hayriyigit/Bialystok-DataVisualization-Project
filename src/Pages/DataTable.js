@@ -1,6 +1,6 @@
 import React from 'react'
 import { HotTable } from '@handsontable/react';
-import Navbar from './Navbar'
+import Navbar from '../components/Navbar'
 
  const DataTable = props => {
     const FileOptions = props.location.state.FileOptions
