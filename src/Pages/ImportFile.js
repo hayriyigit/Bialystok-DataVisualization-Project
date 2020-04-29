@@ -14,7 +14,7 @@ export default class ImportFile extends Component {
 
     setCsvFile = event => {
         this.setState({
-            CsvFile: csvArray(
+            CsvFile : csvArray(
                 event.target.result,
                 this.state.FileOptions.delimeter,
                 this.state.FileOptions.header)
