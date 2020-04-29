@@ -1,3 +1,28 @@
+function csvArray(csv, delimeter, header){
+    let array;
+
+    if(header){
+        array = csv.split("\n")
+
+        for(let i = 0; i < array.length; i++){
+            array[i] = array[i].split(delimeter)
+        }
+
+        //first one for header and second one for body
+        return {head: array[0] ,
+                body: array.splice(1,array.length)}
+    }
+    else{
+        array = csv.split("\n")
+
+        for(let i = 0; i < array.length; i++){
+            array[i] = array[i].split(delimeter)
+        }
+
+        return array
+    }
+}
+
 function csvJSON(csv,delimeter){
 
     var lines=csv.split("\n");
@@ -41,4 +66,4 @@ function jsonCSV(jsonObj) {
     return csv;
 }
 
-module.exports =  {csvJSON,jsonCSV}
+module.exports =  {csvJSON,jsonCSV,csvArray}

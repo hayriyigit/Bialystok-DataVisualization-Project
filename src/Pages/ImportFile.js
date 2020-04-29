@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {Link} from "react-router-dom";
 
-import {csvJSON} from '../Tools/ConvertFiles';
+import {csvArray} from '../Tools/ConvertFiles';
 
 export default class ImportFile extends Component {
     state = {
@@ -14,7 +14,10 @@ export default class ImportFile extends Component {
 
     setCsvFile = event => {
         this.setState({
-            CsvFile: csvJSON(event.target.result, this.state.FileOptions.delimeter)
+            CsvFile: csvArray(
+                event.target.result,
+                this.state.FileOptions.delimeter,
+                this.state.FileOptions.header)
         })
     }
     
@@ -33,7 +36,7 @@ export default class ImportFile extends Component {
               }
             })
           }
-          if (e.target.id === "header") {
+        if (e.target.id === "header") {
             this.setState({
               FileOptions: {
                 ...this.state.FileOptions,
