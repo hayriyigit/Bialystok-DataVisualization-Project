@@ -3,46 +3,27 @@ import { HotTable } from '@handsontable/react';
 import Navbar from '../components/Navbar'
 
 export default class DataTable extends React.Component {
-    constructor(props) {
-        super(props)
-        this.HotTable = React.createRef()
-    }
-
-
-    componentDidMount() {
-        console.log(this.HotTable)
-    }
-
-    getSelectedData=()=>{
-        console.log(this.HotTable.getSelected)
-    }
-
     render(){
-
-        const FileOptions = this.props.location.state.FileOptions
-        const DataSet = this.props.location.state.CsvFile
+        const fileoptions = this.props.location.state.FileOptions
+        const dataset = this.props.location.state.CsvFile
+        const columns = this.props.location.state.columns
 
         const settings = {
-            data: FileOptions.header ? DataSet.body : DataSet,
-            colHeaders: FileOptions.header ? DataSet.head : true,
+            data: fileoptions.header ? dataset.body : dataset,
+            colHeaders: fileoptions.header ? dataset.head : true,
+            columns: Object.values(columns),
             rowHeaders: true,
             dropdownMenu: true,
             filters: true,
             licenseKey: "non-commercial-and-evaluation",
-            outsideClickDeselects: false,
-            selectionMode: 'multiple', // 'single', 'range' or 'multiple'
+
         }
         return(
-            <div>
-        <Navbar />
-        <HotTable
-            settings={settings}
-            ref={this.HotTable}
-        />
-            <button onClick={this.getSelectedData()}>AAAA</button>
-            </div >
+        <div>
+            <Navbar/>
+            <HotTable settings={settings}/>
+        </div >
         )
     }
-    
 }
 
