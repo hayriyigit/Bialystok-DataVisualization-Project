@@ -1,28 +1,38 @@
 import React from 'react'
 import { HotTable } from '@handsontable/react';
-import Navbar from '../components/Navbar'
-
+import Navbar from '../components/Navbar';
+import '../CSS/handsome.css';
 export default class DataTable extends React.Component {
-    render(){
+    render() {
         const fileoptions = this.props.location.state.FileOptions
         const dataset = this.props.location.state.CsvFile
         const columns = this.props.location.state.columns
-
+        let vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        let vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        vw = Math.round(vw / 2)
+        vw = vw.toString() + 'px'
+        vh = Math.round(vh / 1.5)
+        vh = vh.toString() + 'px'
         const settings = {
             data: fileoptions.header ? dataset.body : dataset,
             colHeaders: fileoptions.header ? dataset.head : true,
             columns: Object.values(columns),
             rowHeaders: true,
             dropdownMenu: true,
+            height: vh,
+            width: vw,
             filters: true,
             licenseKey: "non-commercial-and-evaluation",
 
         }
-        return(
-        <div>
-            <Navbar/>
-            <HotTable settings={settings}/>
-        </div >
+        return (
+            <div>
+                <Navbar />
+                <div id="amk">
+                    <HotTable settings={settings} />
+                </div>
+
+            </div >
         )
     }
 }
