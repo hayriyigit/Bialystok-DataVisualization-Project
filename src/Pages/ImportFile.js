@@ -10,8 +10,21 @@ export default class ImportFile extends Component {
     FileOptions: {
       delimeter: null,
       header: false,
-    },
-  };
+    }
+  }
+
+  dataTypes = () => {
+    let columns = {}
+    if(this.state.FileOptions.header){
+      for(let header of this.state.CsvFile.head){
+        columns[header] = {data: header, type: "text"}
+      }
+    }
+    
+    this.setState({
+      columns
+    })
+  }
 
   setCsvFile = (event) => {
     this.setState({
@@ -20,14 +33,14 @@ export default class ImportFile extends Component {
         this.state.FileOptions.delimeter,
         this.state.FileOptions.header
       ),
-    });
-  };
+    }, this.dataTypes)
+  }
 
   handleFile = (file) => {
-    const fileReader = new FileReader();
-    fileReader.onload = this.setCsvFile;
+    const fileReader = new FileReader()
+    fileReader.onload = this.setCsvFile
     fileReader.readAsText(file);
-  };
+  }
 
   optionHandler = (e) => {
     if (e.target.id === "delimeter") {
@@ -36,7 +49,7 @@ export default class ImportFile extends Component {
           ...this.state.FileOptions,
           [e.target.id]: e.target.value,
         },
-      });
+      })
     }
     if (e.target.id === "header") {
       this.setState({
@@ -44,9 +57,9 @@ export default class ImportFile extends Component {
           ...this.state.FileOptions,
           header: !this.state.FileOptions.header,
         },
-      });
+      })
     }
-  };
+  }
 
   handleColumnType = (e) => {
     this.setState({
@@ -74,7 +87,7 @@ export default class ImportFile extends Component {
                       type="text"
                       className="form-control"
                       id="delimeter"
-                      onChange={this.optionHandler.bind(this)}
+                      onChange={this.optionHandler}
                       required
                     />
                   </div>
@@ -88,7 +101,7 @@ export default class ImportFile extends Component {
                         className="form-check-input"
                         type="checkbox"
                         id="header"
-                        onChange={this.optionHandler.bind(this)}
+                        onChange={this.optionHandler}
                       />
                       <label className="form-check-label" htmlFor="header">
                         Table has header
