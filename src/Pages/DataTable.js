@@ -1,8 +1,7 @@
 import React from 'react'
 import { HotTable } from '@handsontable/react';
 import Navbar from '../components/Navbar';
-import P5Wrapper from 'react-p5-wrapper';
-import sketch from '../components/sketch'
+
 export default class DataTable extends React.Component {
     render() {
         const fileoptions = this.props.location.state.FileOptions
@@ -34,14 +33,9 @@ export default class DataTable extends React.Component {
                         <div className="col">
                             <HotTable settings={settings} />
                         </div>
-                        <div className="col" id="drawGraphs">
-                            <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
-
-                        </div>
+                        
                     </div>
-
                 </div>
-
             </div >
         )
     }
