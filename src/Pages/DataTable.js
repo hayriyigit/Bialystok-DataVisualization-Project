@@ -5,7 +5,12 @@ import Navbar from "../components/Navbar";
 import { DataContext } from "../context/DataContext";
 
 const DataTable = () => {
+  const history = useHistory()
   const context = useContext(DataContext);
+  
+  if(!context.csvFile.get){
+    history.push('/')
+  }
   
   const fileoptions = context.options.get
   const dataset = context.csvFile.get;
