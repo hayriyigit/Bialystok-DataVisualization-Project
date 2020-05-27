@@ -16,7 +16,7 @@ export default class ModalRender extends Component {
         
       case "Line Chart":
         return (
-          <LineChartModal show={this.props.show} onHide={this.props.onHide} />
+          <LineChartModal data = {this.props.data} headers = {this.props.headers}  show={this.props.show} onHide={this.props.onHide} />
         );
         
       case "Pie Chart":

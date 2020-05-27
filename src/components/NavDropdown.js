@@ -32,7 +32,7 @@ export default class NavDropdown extends Component {
                         })}
                 </div>
                 
-                <ModalRender show={this.state.modal} onHide={this.handleModal} chart = {this.state.chartType} />
+                <ModalRender data = {this.props.data} headers = {this.props.headers}  show={this.state.modal} onHide={this.handleModal} chart = {this.state.chartType} />
             </div>
         )
     }
