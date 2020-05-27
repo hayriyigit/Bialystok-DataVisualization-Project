@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../context/DataContext";
 
-const BarChartForm = (props) => {
+const BarChartForm = () => {
+  const context = useContext(DataContext)
   return (
     <form class="form-horizontal">
       <fieldset>
@@ -11,7 +13,7 @@ const BarChartForm = (props) => {
           </label>
           <div class="col-md-4">
             <select id="selectbasic" name="selectbasic" class="form-control">
-              {props.headers.map((header) => (
+              {context.csvFile.get.head.map((header) => (
                 <option
                   value={header}
     
@@ -29,10 +31,9 @@ const BarChartForm = (props) => {
           </label>
           <div class="col-md-4">
             <select id="selectbasic" name="selectbasic" class="form-control">
-              {props.headers.map((header) => (
+              {context.csvFile.get.head.map((header) => (
                 <option
                   value={header}
-                  
                 >
                   {header}
                 </option>

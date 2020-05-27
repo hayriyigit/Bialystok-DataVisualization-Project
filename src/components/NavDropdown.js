@@ -1,39 +1,41 @@
-import React, { Component } from 'react'
-import '../CSS/NavDrop.css'
-import ModalRender from './ModalRender'
-export default class NavDropdown extends Component {
-    state = {
-        show: false,
-        modal: false,
-        chartType: null
-    }
-    
-    swapShow = () => {
-        this.setState((prevState) => ({ show: !prevState.show }))
-    }
-    handleModal = (e) => {
-       this.setState({
-           chartType: e ? e.target.id : this.state.chartType,
-           modal: !this.state.modal
-       })
-    }
-    render() {
-        
-        return (
-            <div className="dropdown">
-                <button onClick={this.swapShow} className="dropbtn">{this.props.title}
-                            <i className="fa fa-caret-down"></i>
-                </button>
-                <div className={this.state.show ? "dropdown-content" : "noshow"}>
-                    {this.props.options.map((opt) => {
-                        return(
-                        <button key={opt} id={opt} onClick={this.handleModal}>{opt}</button>
-                        ) 
-                        })}
-                </div>
-                
-                <ModalRender data = {this.props.data} headers = {this.props.headers}  show={this.state.modal} onHide={this.handleModal} chart = {this.state.chartType} />
-            </div>
-        )
-    }
-}
+import React, { useState } from "react";
+import ModalRender from "./ModalRender";
+
+import "../CSS/NavDrop.css";
+const NavDropdown = (props) => {
+  const [show, setShow] = useState(false);
+  const [modal, setModal] = useState(false)
+  const [chartType, setChartType] = useState('')
+
+  const swapShow = () => {
+    setShow((prevState) => !prevState);
+  };
+  const handleModal = (e) => {
+    setChartType(e ? e.target.id : chartType);
+    setModal(prevState => !prevState);
+  };
+  return (
+    <div className="dropdown">
+      <button onClick={swapShow} className="dropbtn">
+        {props.title}
+      </button>
+      <div className={show ? "dropdown-content" : "noshow"}>
+        {props.options.map((opt) => {
+          return (
+            <button key={opt} id={opt} onClick={handleModal}>
+              {opt}
+            </button>
+          );
+        })}
+      </div>
+
+      <ModalRender
+        modal={modal}
+        chartType={chartType}
+        toggleModal={handleModal}
+       />
+    </div>
+  );
+};
+
+export default NavDropdown;

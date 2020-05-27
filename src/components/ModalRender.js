@@ -1,32 +1,35 @@
-import React, { Component } from "react";
-import { BarChartModal, HistogramModal, LineChartModal, PieChartModal} from "./Modals";
+import React from "react";
+import {
+  BarChartModal,
+  HistogramModal,
+  LineChartModal,
+  PieChartModal,
+} from "./Modals";
 
-export default class ModalRender extends Component {
-  render() {
-    switch (this.props.chart) {
-      case "Bar Chart":
-        return (
-          <BarChartModal show={this.props.show} onHide={this.props.onHide} />
-        );
-        
-      case "Histogram":
-        return (
-          <HistogramModal show={this.props.show} onHide={this.props.onHide} />
-        );
-        
-      case "Line Chart":
-        return (
-          <LineChartModal data = {this.props.data} headers = {this.props.headers}  show={this.props.show} onHide={this.props.onHide} />
-        );
-        
-      case "Pie Chart":
-        return (
-          <PieChartModal show={this.props.show} onHide={this.props.onHide} />
-        );
-        
+const ModalRender = props => {
 
-      default:
-        return null;
-    }
+  switch (props.chartType) {
+    case "Bar Chart":
+      return (
+        <BarChartModal modal={props.modal} toggleModal={props.toggleModal}/>
+      );
+
+    case "Histogram":
+      return (
+        <HistogramModal modal={props.modal} toggleModal={props.toggleModal}/>
+      );
+
+    case "Line Chart":
+      return <LineChartModal modal={props.modal} toggleModal={props.toggleModal}/>;
+
+    case "Pie Chart":
+      return (
+        <PieChartModal modal={props.modal} toggleModal={props.toggleModal}/>
+      );
+
+    default:
+      return null;
   }
-}
+};
+
+export default ModalRender;

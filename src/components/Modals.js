@@ -9,23 +9,25 @@ import sketch from "../components/sketch";
 
 import BarChartForm from "./Forms/BarChartForm";
 
-export const BarChartModal = (props) => (
-  <Modal show={props.show} onHide={props.onHide}>
-    <ModalHeader>
-      <ModalTitle>Bar Chart</ModalTitle>
-    </ModalHeader>
-    <ModalBody>
-      Some Chart Settings
-      <div>
-        <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
-      </div>
-    </ModalBody>
-    <ModalFooter>This is the footer</ModalFooter>
-  </Modal>
-);
+export const BarChartModal = (props) => {
+  return (
+    <Modal show={props.modal} onHide={props.toggleModal}>
+      <ModalHeader>
+        <ModalTitle>Bar Chart</ModalTitle>
+      </ModalHeader>
+      <ModalBody>
+        Some Chart Settings
+        <div>
+          <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
+        </div>
+      </ModalBody>
+      <ModalFooter>This is the footer</ModalFooter>
+    </Modal>
+  );
+};
 
 export const HistogramModal = (props) => (
-  <Modal show={props.show} onHide={props.onHide}>
+  <Modal show={props.modal} onHide={props.toggleModal}>
     <ModalHeader>
       <ModalTitle>HistogramModal</ModalTitle>
     </ModalHeader>
@@ -39,22 +41,25 @@ export const HistogramModal = (props) => (
   </Modal>
 );
 
-export const LineChartModal = (props) => (
-  <Modal show={props.show} onHide={props.onHide}>
-    <ModalHeader>
-      <ModalTitle>LineChartModal</ModalTitle>
-    </ModalHeader>
-    <ModalBody>
-      Some Chart Settings
-      <div>
-        <BarChartForm data = {props.data} headers = {props.headers}/>
-      </div>
-    </ModalBody>
-  </Modal>
-);
+export const LineChartModal = (props) => {
+  
+  return (
+    <Modal show={props.modal} onHide={props.toggleModal}>
+      <ModalHeader>
+        <ModalTitle>LineChartModal</ModalTitle>
+      </ModalHeader>
+      <ModalBody>
+        Some Chart Settings
+        <div>
+          <BarChartForm/>
+        </div>
+      </ModalBody>
+    </Modal>
+  );
+};
 
 export const PieChartModal = (props) => (
-  <Modal show={props.show} onHide={props.onHide}>
+  <Modal show={props.modal} onHide={props.toggleModal}>
     <ModalHeader>
       <ModalTitle>PieChartModal</ModalTitle>
     </ModalHeader>
@@ -69,12 +74,10 @@ export const PieChartModal = (props) => (
 );
 
 export const Plot = (props) => (
-  <Modal show={props.show} onHide={props.onHide}>
+  <Modal show={props.modal} onHide={props.toggleModal}>
     <ModalHeader>
       <ModalTitle>LineChartModal</ModalTitle>
     </ModalHeader>
-    <ModalBody>
-      
-    </ModalBody>
+    <ModalBody></ModalBody>
   </Modal>
 );

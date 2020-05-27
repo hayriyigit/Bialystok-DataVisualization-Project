@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
+import { useHistory } from 'react-router-dom';
 import { HotTable } from "@handsontable/react";
 import Navbar from "../components/Navbar";
 import { DataContext } from "../context/DataContext";
 
 const DataTable = () => {
   const context = useContext(DataContext);
+  
   const fileoptions = context.options.get
   const dataset = context.csvFile.get;
   const columns = context.columns.get;
