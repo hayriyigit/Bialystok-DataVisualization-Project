@@ -2,7 +2,6 @@
   display: flex;
     overflow: hidden;
     background-color: #333;
-    margin-bottom: 1em;
     justify-content: flex-start !important;
   }
   a {

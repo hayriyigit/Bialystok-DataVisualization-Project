@@ -17,9 +17,9 @@ const DataTable = () => {
     document.documentElement.clientHeight,
     window.innerHeight || 0
   );
-  vw = Math.round(vw / 2);
+  vw = Math.round(vw);
   vw = vw.toString() + "px";
-  vh = Math.round(vh / 1.2);
+  vh = Math.round(vh-68); // 68: height of the navbar
   vh = vh.toString() + "px";
   
   const settings = {
@@ -36,13 +36,7 @@ const DataTable = () => {
   return (
     <div>
       <Navbar data={settings.data} headers={settings.colHeaders} />
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <HotTable settings={settings} />
-          </div>
-        </div>
-      </div>
+      <HotTable settings={settings} />
     </div>
   );
 };

@@ -14,9 +14,7 @@ const BarChartForm = (props) => {
               {props.headers.map((header) => (
                 <option
                   value={header}
-                  onChange={(e) => {
-                    setXaxis(e.target.value);
-                  }}
+    
                 >
                   {header}
                 </option>
@@ -34,9 +32,7 @@ const BarChartForm = (props) => {
               {props.headers.map((header) => (
                 <option
                   value={header}
-                  onChange={(e) => {
-                    setYaxis(e.target.value);
-                  }}
+                  
                 >
                   {header}
                 </option>

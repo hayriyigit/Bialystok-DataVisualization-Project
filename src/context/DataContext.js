@@ -11,6 +11,7 @@ export const DataProvider = (props) => {
   })
   const [chartOptions, setChartOptions] = useState([])
 
+
   const store = {
       csvFile: {get: csv, set: setCsv},
       columns: {get: columnTypes, set: setColumnTypes},
