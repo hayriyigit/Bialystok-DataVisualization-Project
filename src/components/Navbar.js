@@ -1,17 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import NavDropdown from "./NavDropdown";
 
 import "../CSS/Navbar.css";
-export default class Navbar extends Component {
-  render() {
-    return (
-        <div className="navbar">
-          <NavDropdown title={"File"} options={["Save", "New"]}></NavDropdown>
-          <NavDropdown
-            title={"Charts"}
-            options={["Bar Chart", "Histogram", "Line Chart", "Pie Chart"]}
-          ></NavDropdown>
-        </div>
-    );
-  }
-}
+const Navbar = () => (
+  <div className="navbar">
+    <NavDropdown title={"File"} options={["Save", "New"]}></NavDropdown>
+    <NavDropdown
+      title={"Charts"}
+      options={["Bar Chart", "Histogram", "Line Chart", "Pie Chart"]}
+    ></NavDropdown>
+  </div>
+)
+
+export default Navbar
