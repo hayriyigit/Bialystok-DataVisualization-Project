@@ -24,3 +24,14 @@
     font-family: inherit; /* Important for vertical align on mobile phones */
     margin: 0; /* Important for vertical align on mobile phones */
   }
+
+.modal-content{
+  margin: 0 auto !important;
+  width: 90vw !important;
+}
+
+.modal-dialog{
+  margin: 0 auto !important;
+  max-width: fit-content !important;
+
+}

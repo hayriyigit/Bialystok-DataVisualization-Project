@@ -51,7 +51,7 @@ export const LineChartModal = (props) => {
       <ModalBody>
         Some Chart Settings
         <div>
-          <BarChartForm/>
+          <BarChartForm onHide={props.toggleModal}/>
         </div>
       </ModalBody>
     </Modal>
