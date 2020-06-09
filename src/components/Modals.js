@@ -8,6 +8,9 @@ import P5Wrapper from "react-p5-wrapper";
 import sketch from "../components/sketch";
 
 import BarChartForm from "./Forms/BarChartForm";
+import LineChartForm from "./Forms/LineChartForm";
+import HistChartForm from "./Forms/HistChartForm";
+import PieChartForm from "./Forms/PieChartForm";
 
 export const BarChartModal = (props) => {
   return (
@@ -18,7 +21,7 @@ export const BarChartModal = (props) => {
       <ModalBody>
         Some Chart Settings
         <div>
-          <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
+          <BarChartForm onHide={props.toggleModal} />
         </div>
       </ModalBody>
       <ModalFooter>This is the footer</ModalFooter>
@@ -34,7 +37,7 @@ export const HistogramModal = (props) => (
     <ModalBody>
       Some Chart Settings
       <div>
-        <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
+        <HistChartForm onHide={props.toggleModal} />
       </div>
     </ModalBody>
     <ModalFooter>This is the footer</ModalFooter>
@@ -42,7 +45,6 @@ export const HistogramModal = (props) => (
 );
 
 export const LineChartModal = (props) => {
-  
   return (
     <Modal show={props.modal} onHide={props.toggleModal}>
       <ModalHeader>
@@ -51,7 +53,7 @@ export const LineChartModal = (props) => {
       <ModalBody>
         Some Chart Settings
         <div>
-          <BarChartForm onHide={props.toggleModal}/>
+          <LineChartForm onHide={props.toggleModal} />
         </div>
       </ModalBody>
     </Modal>
@@ -66,18 +68,9 @@ export const PieChartModal = (props) => (
     <ModalBody>
       Some Chart Settings
       <div>
-        <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
+        <PieChartForm onHide={props.toggleModal} />
       </div>
     </ModalBody>
     <ModalFooter>This is the footer</ModalFooter>
-  </Modal>
-);
-
-export const Plot = (props) => (
-  <Modal show={props.modal} onHide={props.toggleModal}>
-    <ModalHeader>
-      <ModalTitle>LineChartModal</ModalTitle>
-    </ModalHeader>
-    <ModalBody></ModalBody>
   </Modal>
 );
