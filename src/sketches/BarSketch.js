@@ -45,7 +45,7 @@ export default function sketch(p) {
     p.textAlign(p.CENTER, p.CENTER);
 
     for (var t = 0; t <= 10; t += 1) {
-      yTick = p.map(t, 0, 10, Math.min(...yAxis), Math.max(...yAxis));
+      yTick = p.map(t, 0, 10, 0, Math.max(...yAxis));
       p.stroke(0)
       p.line(
         marginLeft + 50 - 5,
@@ -97,9 +97,9 @@ export default function sketch(p) {
         0.8 * hTickInt,
         -50 * yTick / vTickScale - 20
       );
-      console.log(marginTop + 20 + graphHeight)
-      console.log(0.8 * hTickInt)
-      console.log(yTick)
+      //console.log(marginTop + 20 + graphHeight)
+      //console.log(0.8 * hTickInt)
+      //console.log(yTick)
     }
   p.noLoop()
 };
@@ -112,6 +112,5 @@ export default function sketch(p) {
     yAxis = props.dataY;
     labelX = props.labelX;
     labelY = props.labelY;
-    console.log(props.dataX)
   };
 }

@@ -8,6 +8,7 @@ import P5Wrapper from "react-p5-wrapper";
 import sketch from "../components/sketch";
 
 import BarChartForm from "./Forms/BarChartForm";
+import HistogramForm from "./Forms/HistogramForm";
 
 export const BarChartModal = (props) => {
   return (
@@ -18,7 +19,7 @@ export const BarChartModal = (props) => {
       <ModalBody>
         Some Chart Settings
         <div>
-          <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
+          <BarChartForm onHide={props.toggleModal}/>
         </div>
       </ModalBody>
       <ModalFooter>This is the footer</ModalFooter>
@@ -34,7 +35,7 @@ export const HistogramModal = (props) => (
     <ModalBody>
       Some Chart Settings
       <div>
-        <P5Wrapper sketch={sketch} color={(255, 0, 0)}></P5Wrapper>
+          <HistogramForm onHide={props.toggleModal}/>
       </div>
     </ModalBody>
     <ModalFooter>This is the footer</ModalFooter>
@@ -50,9 +51,7 @@ export const LineChartModal = (props) => {
       </ModalHeader>
       <ModalBody>
         Some Chart Settings
-        <div>
-          <BarChartForm onHide={props.toggleModal}/>
-        </div>
+        
       </ModalBody>
     </Modal>
   );
