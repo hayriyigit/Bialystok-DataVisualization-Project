@@ -1,9 +1,9 @@
 import React, { Fragment, useContext } from "react";
 import { DataContext } from "../../context/DataContext";
 import { ChartContext } from "../../context/ChartContext";
-import BarChart from "../Charts/BarChart";
+import HistogramChart from "../Charts/HistogramChart";
 
-const BarChartForm = (props) => {
+const HistogramForm = (props) => {
   const context = useContext(DataContext);
   const chartOps = useContext(ChartContext);
 
@@ -33,26 +33,6 @@ const BarChartForm = (props) => {
           </div>
 
           <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">
-              Y Axis
-            </label>
-            <div class="col-md-4">
-              <select
-                id="selectbasic"
-                name="selectbasic"
-                class="form-control"
-                onChange={(e) => {
-                  chartOps.yAxis.set(e.target.value)
-                }}
-              >
-                {context.csvFile.get.head.map((header) => (
-                  <option value={header}>{header}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-4">
               <button
@@ -70,9 +50,10 @@ const BarChartForm = (props) => {
           </div>
         </fieldset>
       </form>
-      {chartOps.isPlot.get ? <BarChart modal={true} /> : null}
+      
+      {chartOps.isPlot.get ? <HistogramChart modal={true} /> : null}
     </Fragment>
   );
 };
 
-export default BarChartForm;
+export default HistogramForm;

@@ -4,12 +4,9 @@ import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
-import P5Wrapper from "react-p5-wrapper";
-import sketch from "../components/sketch";
-
 import BarChartForm from "./Forms/BarChartForm";
+import HistogramForm from "./Forms/HistogramForm";
 import LineChartForm from "./Forms/LineChartForm";
-import HistChartForm from "./Forms/HistChartForm";
 import PieChartForm from "./Forms/PieChartForm";
 
 export const BarChartModal = (props) => {
@@ -21,7 +18,7 @@ export const BarChartModal = (props) => {
       <ModalBody>
         Some Chart Settings
         <div>
-          <BarChartForm onHide={props.toggleModal} />
+          <BarChartForm onHide={props.toggleModal}/>
         </div>
       </ModalBody>
       <ModalFooter>This is the footer</ModalFooter>
@@ -37,7 +34,7 @@ export const HistogramModal = (props) => (
     <ModalBody>
       Some Chart Settings
       <div>
-        <HistChartForm onHide={props.toggleModal} />
+          <HistogramForm onHide={props.toggleModal}/>
       </div>
     </ModalBody>
     <ModalFooter>This is the footer</ModalFooter>
