@@ -8,7 +8,6 @@ let xAxis;
 let yAxis;
 let labelX;
 let jsonObj;
-let keysOfArray
 
 export default function sketch(p) {
     let canvas;

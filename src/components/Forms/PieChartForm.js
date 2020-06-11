@@ -22,7 +22,7 @@ const PieChartForm = (props) => {
                 name="selectbasic"
                 class="form-control"
                 onChange={(e) => {
-                  chartOps.catVars.set(e.target.value)
+                  chartOps.xAxis.set(e.target.value)
                 }}
               >
                 {context.csvFile.get.head.map((header) => (

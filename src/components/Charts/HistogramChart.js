@@ -14,8 +14,6 @@ import HistogramSketch from "../../sketches/HistogramSketch";
 import "../../CSS/Navbar.css";
 const BarChart = (props) => {
   let xValues = [];
-  let yValues = [];
-
   const [modal, setModal] = useState(props.modal);
   const context = useContext(DataContext);
   const chartOps = useContext(ChartContext);
