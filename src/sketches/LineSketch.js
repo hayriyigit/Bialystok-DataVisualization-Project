@@ -1,3 +1,4 @@
+import roundMe from '../Tools/Utils';
 var marginTop = 40;
 var marginLeft = 50;
 var graphWidth = 1100;
@@ -32,7 +33,8 @@ export default function sketch(p) {
     p.line(p.width - 50, p.height - 50, 50, p.height - 50);
 
     for (let i = 0; i < 20; i++) {
-      yTick = p.floor(p.map(i, 0, 20, Math.max(...data), Math.min(...data)));
+      yTick = roundMe(p.map(i, 0, 20, Math.max(...data), Math.min(...data)),2);
+    
       p.strokeWeight(0.3);
       p.line(
         45,
@@ -41,7 +43,7 @@ export default function sketch(p) {
         50 + i * p.floor(yLength / 20)
       );
       p.strokeWeight(1);
-      p.text(yTick, 20, 57 + i * p.floor(yLength / 20));
+      p.text(yTick, 10, 57 + i * p.floor(yLength / 20));
     }
 
     for (let i = 0; i < data.length; i++) {
