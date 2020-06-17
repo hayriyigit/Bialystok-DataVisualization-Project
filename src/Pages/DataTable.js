@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, createRef, useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { HotTable } from "@handsontable/react";
 import Navbar from "../components/Navbar";
@@ -7,11 +7,24 @@ import { DataContext } from "../context/DataContext";
 const DataTable = () => {
   const history = useHistory()
   const context = useContext(DataContext);
+  const hotRef = createRef();
+
+  const[hotInstance,setHotInstance] = useState(null);
 
   if(!context.csvFile.get){
     history.push('/')
   }
   
+ useEffect(() => {
+  if(hotRef){
+    setHotInstance(prev => {
+      if(prev !== hotRef.current.hotInstance){
+        return hotRef.current.hotInstance;
+      }
+    })
+  }
+ },[]);
+
   const fileoptions = context.options.get
   const dataset = context.csvFile.get;
   const columns = context.columns.get;
@@ -37,15 +50,19 @@ const DataTable = () => {
     dropdownMenu: true,
     height: vh,
     width: vw,
+    afterFilter: ((result)=> {
+      console.log(hotInstance.getData())
+    }),
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
   };
   return (
     <div>
       <Navbar data={settings.data} headers={settings.colHeaders} />
-      <HotTable settings={settings} />
+      <HotTable ref = {hotRef} settings={settings} />
     </div>
   );
 };
+
 
 export default DataTable;
