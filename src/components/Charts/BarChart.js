@@ -18,13 +18,13 @@ const BarChart = (props) => {
 
   const [modal, setModal] = useState(props.modal);
   const context = useContext(DataContext);
-  const chartOps = useContext(ChartContext);
-
+  const chartOps = useContext(ChartContext)
   for (let attr of context.csvFile.get.body) {
     xValues.push(attr[chartOps.xAxis.get]);
     yValues.push(attr[chartOps.yAxis.get]);
   }
-
+  console.log(xValues)
+  console.log(yValues)
   return (
     <Modal
       show={modal}

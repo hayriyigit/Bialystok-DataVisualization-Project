@@ -1,10 +1,7 @@
 var marginTop = 150;
 var marginLeft = 40;
-var marginRight = 20;
-var marginBottom = 30;
 var graphWidth = 900;
 var graphHeight = 500;
-var dataShown;
 var scale;
 let yTick;
 
@@ -24,7 +21,7 @@ export default function sketch(p) {
   p.draw = () => {
     p.background(220);
     p.fill(0);
-   
+
     p.textSize(20);
     p.text(
       `${labelX}-${labelY} Bar Graph`,
@@ -67,9 +64,9 @@ export default function sketch(p) {
     );
     var hTickInt = graphWidth / xAxis.length;
     for (var t = 0; t < xAxis.length; t++) {
-        p.fill(0);
-        p.stroke(0)
-        p.line(
+      p.fill(0);
+      p.stroke(0)
+      p.line(
         marginLeft + 50 + t * hTickInt + hTickInt / 2,
         marginTop + 20 + graphHeight,
         marginLeft + 50 + t * hTickInt + hTickInt / 2,
@@ -101,16 +98,18 @@ export default function sketch(p) {
       //console.log(0.8 * hTickInt)
       //console.log(yTick)
     }
-  p.noLoop()
-};
+    p.noLoop()
+  };
 
   p.myCustomRedrawAccordingToNewPropsHandler = (props) => {
-    if (canvas)
+    if (canvas) {
       //Make sure the canvas has been created
       p.fill(props.color);
-    xAxis = props.dataX;
-    yAxis = props.dataY;
-    labelX = props.labelX;
-    labelY = props.labelY;
+      xAxis = props.dataX;
+      yAxis = props.dataY;
+      labelX = props.labelX;
+      labelY = props.labelY;
+    }
+
   };
 }

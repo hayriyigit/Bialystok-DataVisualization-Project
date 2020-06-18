@@ -10,18 +10,20 @@ export const DataProvider = (props) => {
     header: false,
   })
   const [chartOptions, setChartOptions] = useState([])
+  const [getFunction, setFilterData] = useState(null)
 
 
   const store = {
-      csvFile: {get: csv, set: setCsv},
-      columns: {get: columnTypes, set: setColumnTypes},
-      options: {get: fileOptions, set: setFileOptions},
-      charts: {get: chartOptions, set: setChartOptions}
+    csvFile: { get: csv, set: setCsv },
+    filterData: { get: getFunction, set: setFilterData },
+    columns: { get: columnTypes, set: setColumnTypes },
+    options: { get: fileOptions, set: setFileOptions },
+    charts: { get: chartOptions, set: setChartOptions }
   }
-  
-  return(
+
+  return (
     <DataContext.Provider value={store}>
-        {props.children}
+      {props.children}
     </DataContext.Provider>
   )
 

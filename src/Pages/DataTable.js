@@ -51,7 +51,12 @@ const DataTable = () => {
     height: vh,
     width: vw,
     afterFilter: ((result)=> {
-      console.log(hotInstance.getData())
+      let filteredDataArr = []
+      filteredDataArr.push(hotInstance.getColHeader())
+      filteredDataArr.push(hotInstance.getData())
+      //THIS IS NOT CHANGING...
+      context.filterData.set(filteredDataArr)
+      console.log("im context", context.filterData)
     }),
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
