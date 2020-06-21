@@ -1,8 +1,9 @@
 import React, { useContext, createRef, useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { HotTable } from "@handsontable/react";
 import Navbar from "../components/Navbar";
 import { DataContext } from "../context/DataContext";
+
 
 const DataTable = () => {
   const context = useContext(DataContext);
@@ -12,20 +13,20 @@ const DataTable = () => {
   const [hotInstance, setHotInstance] = useState(null);
 
   if (!context.csvFile.get) {
-    history.push('/')
+    history.push("/");
   }
 
   useEffect(() => {
     if (hotRef) {
-      setHotInstance(prev => {
+      setHotInstance((prev) => {
         if (prev !== hotRef.current.hotInstance) {
           return hotRef.current.hotInstance;
         }
-      })
+      });
     }
   }, []);
 
-  const fileoptions = context.options.get
+  const fileoptions = context.options.get;
   const dataset = context.csvFile.get;
   const columns = context.columns.get;
 
@@ -50,32 +51,17 @@ const DataTable = () => {
     dropdownMenu: true,
     height: vh,
     width: vw,
-    afterFilter: (async (result) => {
-      let headers = await hotInstance.getColHeader()
-      let dataRows = await hotInstance.getData()
-      console.log(dataRows)
+    afterFilter: async (result) => {
+      let headers = await hotInstance.getColHeader();
+      let dataRows = await hotInstance.getData();
+      console.log(dataRows);
       let filteredDataArr = {
         headers: headers,
-        data: dataRows
-      }
-      filteredDataArr.data = []
+        data: dataRows,
+      };
 
-      //assing values
-      for (let outer = 0; outer < dataRows.length; outer++) {
-        let obj = {}
-        for (let inner = 0; inner < dataRows[0].length; inner++) {
-
-          for (let i = 0; i < headers.length; i++) {
-
-            obj[headers[i]] = dataRows[outer][inner]
-          } 
-        }
-        filteredDataArr.data.push(obj)
-      }
-
-
-      await context.filterData.set(filteredDataArr)
-    }),
+      await context.filterData.set(filteredDataArr);
+    },
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
   };
@@ -86,6 +72,5 @@ const DataTable = () => {
     </div>
   );
 };
-
 
 export default DataTable;

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { ChartContext } from "../../context/ChartContext";
 import { DataContext } from "../../context/DataContext";
+import {column} from 'mathjs';
 
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
@@ -19,12 +20,20 @@ const BarChart = (props) => {
   const [modal, setModal] = useState(props.modal);
   const context = useContext(DataContext);
   const chartOps = useContext(ChartContext)
-  for (let attr of context.csvFile.get.body) {
-    xValues.push(attr[chartOps.xAxis.get]);
-    yValues.push(attr[chartOps.yAxis.get]);
+  if(context.filterData.get.data){
+    let data = context.filterData.get.data
+    let header = context.filterData.get.headers
+    for(let i = 0; i < data.length; i++){
+      xValues.push(column(data,header.indexOf(chartOps.xAxis.get))[i][0])
+      yValues.push(column(data,header.indexOf(chartOps.yAxis.get))[i][0])
+    }
+  }else{
+    for (let attr of context.csvFile.get.body) {
+      xValues.push(attr[chartOps.xAxis.get]);
+      yValues.push(attr[chartOps.yAxis.get]);
+    }
   }
-  console.log(xValues)
-  console.log(yValues)
+
   return (
     <Modal
       show={modal}
