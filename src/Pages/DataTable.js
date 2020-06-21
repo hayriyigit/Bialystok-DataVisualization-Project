@@ -9,21 +9,21 @@ const DataTable = () => {
   const history = useHistory();
   const hotRef = createRef();
 
-  const[hotInstance,setHotInstance] = useState(null);
+  const [hotInstance, setHotInstance] = useState(null);
 
-  if(!context.csvFile.get){
+  if (!context.csvFile.get) {
     history.push('/')
   }
-  
- useEffect(() => {
-  if(hotRef){
-    setHotInstance(prev => {
-      if(prev !== hotRef.current.hotInstance){
-        return hotRef.current.hotInstance;
-      }
-    })
-  }
- },[]);
+
+  useEffect(() => {
+    if (hotRef) {
+      setHotInstance(prev => {
+        if (prev !== hotRef.current.hotInstance) {
+          return hotRef.current.hotInstance;
+        }
+      })
+    }
+  }, []);
 
   const fileoptions = context.options.get
   const dataset = context.csvFile.get;
@@ -39,9 +39,9 @@ const DataTable = () => {
   );
   vw = Math.round(vw);
   vw = vw.toString() + "px";
-  vh = Math.round(vh-68); // 68: height of the navbar
+  vh = Math.round(vh - 68); // 68: height of the navbar
   vh = vh.toString() + "px";
-  
+
   const settings = {
     data: fileoptions.header ? dataset.body : dataset,
     colHeaders: fileoptions.header ? dataset.head : true,
@@ -50,16 +50,31 @@ const DataTable = () => {
     dropdownMenu: true,
     height: vh,
     width: vw,
-    afterFilter:  (async (result)=> {
+    afterFilter: (async (result) => {
+      let headers = await hotInstance.getColHeader()
+      let dataRows = await hotInstance.getData()
+      console.log(dataRows)
       let filteredDataArr = {
-        headers: await hotInstance.getColHeader(),
-        data: await hotInstance.getData()
+        headers: headers,
+        data: dataRows
       }
-      // filteredDataArr.push(await hotInstance.getColHeader())
-      // filteredDataArr.push(await hotInstance.getData())
-      //THIS IS NOT CHANGING...
+      filteredDataArr.data = []
+
+      //assing values
+      for (let outer = 0; outer < dataRows.length; outer++) {
+        let obj = {}
+        for (let inner = 0; inner < dataRows[0].length; inner++) {
+
+          for (let i = 0; i < headers.length; i++) {
+
+            obj[headers[i]] = dataRows[outer][inner]
+          } 
+        }
+        filteredDataArr.data.push(obj)
+      }
+
+
       await context.filterData.set(filteredDataArr)
-      console.log("im context", context.filterData.get)
     }),
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
@@ -67,7 +82,7 @@ const DataTable = () => {
   return (
     <div>
       <Navbar data={settings.data} headers={settings.colHeaders} />
-      <HotTable ref = {hotRef} settings={settings} />
+      <HotTable ref={hotRef} settings={settings} />
     </div>
   );
 };
