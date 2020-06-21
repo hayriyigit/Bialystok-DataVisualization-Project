@@ -10,15 +10,18 @@ export const DataProvider = (props) => {
     header: false,
   })
   const [chartOptions, setChartOptions] = useState([])
-  const [getFunction, setFilterData] = useState(null)
+  const [filteredData, setFilteredData] = useState({
+    headers:null,
+    data: null
+  })
 
 
   const store = {
     csvFile: { get: csv, set: setCsv },
-    filterData: { get: getFunction, set: setFilterData },
     columns: { get: columnTypes, set: setColumnTypes },
     options: { get: fileOptions, set: setFileOptions },
-    charts: { get: chartOptions, set: setChartOptions }
+    charts: { get: chartOptions, set: setChartOptions },
+    filterData: { get: filteredData, set: setFilteredData }
   }
 
   return (

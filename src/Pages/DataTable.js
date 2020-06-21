@@ -5,8 +5,8 @@ import Navbar from "../components/Navbar";
 import { DataContext } from "../context/DataContext";
 
 const DataTable = () => {
-  const history = useHistory()
   const context = useContext(DataContext);
+  const history = useHistory();
   const hotRef = createRef();
 
   const[hotInstance,setHotInstance] = useState(null);
@@ -50,13 +50,16 @@ const DataTable = () => {
     dropdownMenu: true,
     height: vh,
     width: vw,
-    afterFilter: ((result)=> {
-      let filteredDataArr = []
-      filteredDataArr.push(hotInstance.getColHeader())
-      filteredDataArr.push(hotInstance.getData())
+    afterFilter:  (async (result)=> {
+      let filteredDataArr = {
+        headers: await hotInstance.getColHeader(),
+        data: await hotInstance.getData()
+      }
+      // filteredDataArr.push(await hotInstance.getColHeader())
+      // filteredDataArr.push(await hotInstance.getData())
       //THIS IS NOT CHANGING...
-      context.filterData.set(filteredDataArr)
-      console.log("im context", context.filterData)
+      await context.filterData.set(filteredDataArr)
+      console.log("im context", context.filterData.get)
     }),
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
