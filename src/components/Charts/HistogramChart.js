@@ -76,7 +76,7 @@ const HistogramChart = (props) => {
         <ModalTitle>Histogram Chart</ModalTitle>
       </ModalHeader>
       <ModalBody>
-
+        
         <div>
           <P5Wrapper
             sketch={HistogramSketch}
@@ -88,7 +88,7 @@ const HistogramChart = (props) => {
           ></P5Wrapper>
         </div>
       </ModalBody>
-      <ModalFooter>This is the footer</ModalFooter>
+      <ModalFooter>Click outside this window to close it</ModalFooter>
     </Modal>
   );
 };

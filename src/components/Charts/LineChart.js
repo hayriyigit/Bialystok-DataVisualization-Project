@@ -45,7 +45,7 @@ const LineChart = (props) => {
           ></P5Wrapper>
         </div>
       </ModalBody>
-      <ModalFooter>This is the footer</ModalFooter>
+      <ModalFooter>Click outside this window to close it</ModalFooter>
     </Modal>
   );
 };

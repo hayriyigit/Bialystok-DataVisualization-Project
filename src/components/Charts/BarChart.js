@@ -43,7 +43,7 @@ const BarChart = (props) => {
       }}
     >
       <ModalHeader>
-        <ModalTitle>BarChart</ModalTitle>
+        <ModalTitle>Bar chart settings</ModalTitle>
       </ModalHeader>
       <ModalBody>
         Some Chart Settings
@@ -58,7 +58,7 @@ const BarChart = (props) => {
           ></P5Wrapper>
         </div>
       </ModalBody>
-      <ModalFooter>This is the footer</ModalFooter>
+      <ModalFooter>Click outside this window to close it</ModalFooter>
     </Modal>
   );
 };

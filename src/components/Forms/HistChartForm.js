@@ -9,36 +9,36 @@ const HistChartForm = (props) => {
 
   return (
     <Fragment>
-      <form class="form-horizontal">
+      <form className="form-horizontal">
         <fieldset>
-          <legend>Form Name</legend>
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">
+          <legend>Histogram chart settings</legend>
+          <div className="form-group">
+            <label className="col-md-4 control-label" htmlFor="selectbasic">
               Attribute
             </label>
             <div class="col-md-4">
               <select
                 id="selectbasic"
                 name="selectbasic"
-                class="form-control"
+                className="form-control"
                 onChange={(e) => {
                   chartOps.catVars.set(e.target.value)
                 }}
               >
                 {context.csvFile.get.head.map((header) => (
-                  <option value={header}>{header}</option>
+                  <option key={header} value={header}>{header}</option>
                 ))}
               </select>
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton"></label>
-            <div class="col-md-4">
+          <div className="form-group">
+            <label className="col-md-4 control-label" htmlFor="singlebutton"></label>
+            <div className="col-md-4">
               <button
                 id="singlebutton"
                 name="singlebutton"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={(e) => {
                   e.preventDefault();
                   chartOps.isPlot.set(prevState => !prevState)

@@ -41,7 +41,7 @@ export default function sketch(p) {
     var vTickScale = scale / 10; //each tick translates to this much increase in rating
     p.textAlign(p.CENTER, p.CENTER);
 
-    for (var t = 0; t <= 10; t += 1) {
+    for (let t = 0; t <= 10; t += 1) {
       yTick = p.map(t, 0, 10, 0, Math.max(...yAxis));
       p.stroke(0)
       p.line(
@@ -63,7 +63,7 @@ export default function sketch(p) {
       marginTop + 20 + graphHeight
     );
     var hTickInt = graphWidth / xAxis.length;
-    for (var t = 0; t < xAxis.length; t++) {
+    for (let t = 0; t < xAxis.length; t++) {
       p.fill(0);
       p.stroke(0)
       p.line(
@@ -94,9 +94,6 @@ export default function sketch(p) {
         0.8 * hTickInt,
         -50 * yTick / vTickScale - 20
       );
-      //console.log(marginTop + 20 + graphHeight)
-      //console.log(0.8 * hTickInt)
-      //console.log(yTick)
     }
     p.noLoop()
   };

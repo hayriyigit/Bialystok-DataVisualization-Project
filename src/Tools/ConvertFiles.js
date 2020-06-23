@@ -32,12 +32,12 @@ function csvJSON(csv,delimeter,header){
     var headers=lines[0].split(delimeter);
     
     if(header){
-        for(var i=1;i<lines.length;i++){
+        for(let i=1;i<lines.length;i++){
   
-            var obj = {};
-            var currentline=lines[i].split(delimeter);
+            let obj = {};
+            let currentline=lines[i].split(delimeter);
       
-            for(var j=0;j<headers.length;j++){
+            for(let j=0;j<headers.length;j++){
                 obj[headers[j]] = currentline[j];
             }
       
@@ -47,12 +47,12 @@ function csvJSON(csv,delimeter,header){
         return {head: headers, body: result}
 
     } else{
-        for(var i=0;i<lines.length;i++){
+        for(let i=0;i<lines.length;i++){
   
-            var obj = {};
-            var currentline=lines[i].split(delimeter);
+            let obj = {};
+            let currentline=lines[i].split(delimeter);
       
-            for(var j=0;j<headers.length;j++){
+            for(let j=0;j<headers.length;j++){
                 obj[headers[j]] = currentline[j];
             }
       

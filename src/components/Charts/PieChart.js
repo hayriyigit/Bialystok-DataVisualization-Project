@@ -17,21 +17,45 @@ const PieChart = (props) => {
   const context = useContext(DataContext);
   let xValues = []
   let nullObj = {}
-  for (let attr of context.csvFile.get.body) {
-    let arrOfKeys = Object.keys(nullObj)
-
-    if (!arrOfKeys.includes(attr[chartOps.xAxis.get])) {
-      let val = attr[chartOps.xAxis.get]
-      nullObj[val] = 1
-      xValues.push(attr[chartOps.xAxis.get]);
-
-    } else {
-      let value = nullObj[attr[chartOps.xAxis.get]]
-      value += 1
-      let key = attr[chartOps.xAxis.get]
-      nullObj[key] = value
+  if (context.filterData.get.data) {
+    let indexOfHeader = null
+    
+    for (let attr of context.filterData.get.headers) {
+      if (attr === chartOps.xAxis.get) {
+        indexOfHeader = context.filterData.get.headers.indexOf(chartOps.xAxis.get)
+        break
+      }
     }
+    for (let attrBody of context.filterData.get.data) {
+      let arrOfKeys = Object.keys(nullObj)
+      if (!arrOfKeys.includes(attrBody[indexOfHeader])) {
+        let val = attrBody[indexOfHeader]
+        nullObj[val] = 1
+        xValues.push(attrBody[indexOfHeader]);
 
+      } else {  
+        let value = nullObj[attrBody[indexOfHeader]]
+        value += 1
+        let key = attrBody[indexOfHeader]
+        nullObj[key] = value
+      }
+    }
+  } else {
+    for (let attr of context.csvFile.get.body) {
+      let arrOfKeys = Object.keys(nullObj)
+      if (!arrOfKeys.includes(attr[chartOps.xAxis.get])) {
+        let val = attr[chartOps.xAxis.get]
+        nullObj[val] = 1
+        xValues.push(attr[chartOps.xAxis.get]);
+
+      } else {
+        let value = nullObj[attr[chartOps.xAxis.get]]
+        value += 1
+        let key = attr[chartOps.xAxis.get]
+        nullObj[key] = value
+      }
+
+    }
   }
 
   return (
@@ -58,7 +82,7 @@ const PieChart = (props) => {
           ></P5Wrapper>
         </div>
       </ModalBody>
-      <ModalFooter>This is the footer</ModalFooter>
+      <ModalFooter>Click outside this window to close it</ModalFooter>
     </Modal>
   );
 };

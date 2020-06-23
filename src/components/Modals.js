@@ -16,12 +16,12 @@ export const BarChartModal = (props) => {
         <ModalTitle>Bar Chart</ModalTitle>
       </ModalHeader>
       <ModalBody>
-        Some Chart Settings
+        
         <div>
           <BarChartForm onHide={props.toggleModal}/>
         </div>
       </ModalBody>
-      <ModalFooter>This is the footer</ModalFooter>
+      <ModalFooter>Click outside this window to close it.</ModalFooter>
     </Modal>
   );
 };
@@ -29,15 +29,15 @@ export const BarChartModal = (props) => {
 export const HistogramModal = (props) => (
   <Modal show={props.modal} onHide={props.toggleModal}>
     <ModalHeader>
-      <ModalTitle>HistogramModal</ModalTitle>
+      <ModalTitle>Histogram chart settings</ModalTitle>
     </ModalHeader>
     <ModalBody>
-      Some Chart Settings
+    <h5>Choose a categorical variable!</h5>
       <div>
           <HistogramForm onHide={props.toggleModal}/>
       </div>
     </ModalBody>
-    <ModalFooter>This is the footer</ModalFooter>
+    <ModalFooter>Click outside this window to close it.</ModalFooter>
   </Modal>
 );
 
@@ -45,14 +45,15 @@ export const LineChartModal = (props) => {
   return (
     <Modal show={props.modal} onHide={props.toggleModal}>
       <ModalHeader>
-        <ModalTitle>LineChartModal</ModalTitle>
+        <ModalTitle>Line chart settings</ModalTitle>
       </ModalHeader>
       <ModalBody>
-        Some Chart Settings
+        
         <div>
           <LineChartForm onHide={props.toggleModal} />
         </div>
       </ModalBody>
+      <ModalFooter>Click outside this window to close it.</ModalFooter>
     </Modal>
   );
 };
@@ -60,14 +61,14 @@ export const LineChartModal = (props) => {
 export const PieChartModal = (props) => (
   <Modal show={props.modal} onHide={props.toggleModal}>
     <ModalHeader>
-      <ModalTitle>PieChartModal</ModalTitle>
+      <ModalTitle>Pie chart settings</ModalTitle>
     </ModalHeader>
     <ModalBody>
-      Some Chart Settings
+      
       <div>
         <PieChartForm onHide={props.toggleModal} />
       </div>
     </ModalBody>
-    <ModalFooter>This is the footer</ModalFooter>
+    <ModalFooter>Click outside this window to close it.</ModalFooter>
   </Modal>
 );

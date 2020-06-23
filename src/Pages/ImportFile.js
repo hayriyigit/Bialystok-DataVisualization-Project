@@ -124,7 +124,7 @@ const ImportFile = () => {
                   style={{ backgroundColor: "gray" }}
                 >
                   {context.csvFile.get.head.map((header) => (
-                    <div>
+                    <div key={header}>
                       <div className="col-sm-2">{header}</div>
                       <div className="col-sm-10">
                         <select
