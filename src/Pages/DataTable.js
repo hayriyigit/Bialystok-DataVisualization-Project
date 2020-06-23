@@ -54,7 +54,6 @@ const DataTable = () => {
     afterFilter: async (result) => {
       let headers = await hotInstance.getColHeader();
       let dataRows = await hotInstance.getData();
-      console.log(dataRows);
       let filteredDataArr = {
         headers: headers,
         data: dataRows,

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useContext } from "react";
 import { DataContext } from "../../context/DataContext";
 import { ChartContext } from "../../context/ChartContext";
 import HistChart from "../Charts/HistChart";

@@ -93,9 +93,6 @@ export default function sketch(p) {
                 0.8 * hTickInt,
                 -50 * yTick / vTickScale - 20
             );
-            //console.log(marginTop + 20 + graphHeight)
-            //console.log(0.8 * hTickInt)
-            //console.log(yTick)
         }
         p.noLoop()
     };

@@ -12,31 +12,58 @@ import P5Wrapper from "react-p5-wrapper";
 import HistogramSketch from "../../sketches/HistogramSketch";
 
 import "../../CSS/Navbar.css";
-const BarChart = (props) => {
+const HistogramChart = (props) => {
   let xValues = [];
   const [modal, setModal] = useState(props.modal);
   const context = useContext(DataContext);
   const chartOps = useContext(ChartContext);
 
   let nullObj = {}
-  for (let attr of context.csvFile.get.body) {
-    let arrOfKeys = Object.keys(nullObj)
+  //if there was a filter applied, proceed differently.
+
+
+  // we need to access different since we are receiving an array with order head as first index of the array and following are rows
+  if (context.filterData.get.data) {
+    let indexOfHeader = null
     
-    if (!arrOfKeys.includes(attr[chartOps.xAxis.get])) {
-      let val = attr[chartOps.xAxis.get]
-      nullObj[val] = 1
-      xValues.push(attr[chartOps.xAxis.get]);
-      
-    } else {
-      let value = nullObj[attr[chartOps.xAxis.get]]
-      value += 1
-      let key = attr[chartOps.xAxis.get]
-      nullObj[key] = value
+    for (let attr of context.filterData.get.headers) {
+      if (attr === chartOps.xAxis.get) {
+        indexOfHeader = context.filterData.get.headers.indexOf(chartOps.xAxis.get)
+        break
+      }
     }
-    
+    for (let attrBody of context.filterData.get.data) {
+      let arrOfKeys = Object.keys(nullObj)
+      if (!arrOfKeys.includes(attrBody[indexOfHeader])) {
+        let val = attrBody[indexOfHeader]
+        nullObj[val] = 1
+        xValues.push(attrBody[indexOfHeader]);
+
+      } else {  
+        let value = nullObj[attrBody[indexOfHeader]]
+        value += 1
+        let key = attrBody[indexOfHeader]
+        nullObj[key] = value
+      }
+    }
+  } else {
+    for (let attr of context.csvFile.get.body) {
+      let arrOfKeys = Object.keys(nullObj)
+      if (!arrOfKeys.includes(attr[chartOps.xAxis.get])) {
+        let val = attr[chartOps.xAxis.get]
+        nullObj[val] = 1
+        xValues.push(attr[chartOps.xAxis.get]);
+
+      } else {
+        let value = nullObj[attr[chartOps.xAxis.get]]
+        value += 1
+        let key = attr[chartOps.xAxis.get]
+        nullObj[key] = value
+      }
+
+    }
   }
 
-  
   return (
     <Modal
       show={modal}
@@ -66,4 +93,4 @@ const BarChart = (props) => {
   );
 };
 
-export default BarChart;
+export default HistogramChart;
