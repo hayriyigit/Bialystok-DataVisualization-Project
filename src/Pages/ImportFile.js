@@ -53,7 +53,7 @@ const ImportFile = () => {
     const value = e.target.value;
 
     context.columns.set((prevColumns) => {
-      return {...prevColumns, [`${id}`]: { data: id, type: value } };
+      return { ...prevColumns, [`${id}`]: { data: id, type: value } };
     });
   };
 
@@ -62,6 +62,8 @@ const ImportFile = () => {
       <div className="container">
         <div className="row my-5">
           <div className="col-xl-8 mx-auto">
+            <h1 style={{margin: "0 auto"}}>CSV Editor</h1>
+            <br></br>
             <form>
               <div className="form-group row">
                 <label htmlFor="delimeter" className="col-sm-2 col-form-label">
@@ -121,9 +123,13 @@ const ImportFile = () => {
               {context.options.get.header && context.csvFile.get ? (
                 <div
                   className="form-group row p-3 rounded-sm"
-                  style={{ backgroundColor: "gray" }}
+                  style={{ backgroundColor: "gray", display: "block", alignContent: "center" }}
+
                 >
+                  <h5 style={{ color: "white" }}>Please select column types</h5>
+                  <br></br>
                   {context.csvFile.get.head.map((header) => (
+
                     <div key={header}>
                       <div className="col-sm-2">{header}</div>
                       <div className="col-sm-10">
