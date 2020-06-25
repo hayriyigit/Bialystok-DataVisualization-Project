@@ -36,8 +36,14 @@ const HistogramChart = (props) => {
       let arrOfKeys = Object.keys(nullObj)
       if (!arrOfKeys.includes(attrBody[indexOfHeader])) {
         let val = attrBody[indexOfHeader]
-        nullObj[val] = 1
-        xValues.push(attrBody[indexOfHeader]);
+        if(val){
+          nullObj[val] = 1
+      
+          xValues.push(attrBody[indexOfHeader]);
+        } else{
+          continue
+        }
+        
 
       } else {  
         let value = nullObj[attrBody[indexOfHeader]]
@@ -51,8 +57,14 @@ const HistogramChart = (props) => {
       let arrOfKeys = Object.keys(nullObj)
       if (!arrOfKeys.includes(attr[chartOps.xAxis.get])) {
         let val = attr[chartOps.xAxis.get]
-        nullObj[val] = 1
-        xValues.push(attr[chartOps.xAxis.get]);
+        if(val){
+          nullObj[val] = 1
+        
+          xValues.push(attr[chartOps.xAxis.get]);
+        } else{
+          continue
+        }
+        
 
       } else {
         let value = nullObj[attr[chartOps.xAxis.get]]

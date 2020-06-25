@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { ChartContext } from "../../context/ChartContext";
 import { DataContext } from "../../context/DataContext";
-import {column} from 'mathjs';
+import { column } from 'mathjs';
 
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
@@ -20,30 +20,52 @@ const BarChart = (props) => {
   const [modal, setModal] = useState(props.modal);
   const context = useContext(DataContext);
   const chartOps = useContext(ChartContext)
-  if(context.filterData.get.data){
+  if (context.filterData.get.data) {
     let data = context.filterData.get.data
     let header = context.filterData.get.headers
-    for(let i = 0; i < data.length; i++){
-      xValues.push(column(data,header.indexOf(chartOps.xAxis.get))[i][0])
-      let val = column(data,header.indexOf(chartOps.yAxis.get))[i][0]
-      
-      if(isNaN(parseFloat(val))){
-        continue
+    for (let i = 0; i < data.length; i++) {
+      let xValue = column(data, header.indexOf(chartOps.xAxis.get))[i][0]
+      if(xValue){
+        xValues.push(column(data, header.indexOf(chartOps.xAxis.get))[i][0])
       } else{
-        yValues.push(column(val))
+        continue
       }
       
+      let val = column(data, header.indexOf(chartOps.yAxis.get))[i][0]
+
+      if (isNaN(parseFloat(val))) {
+        continue
+      } else {
+        if (val) {
+          yValues.push(column(val))
+        } else {
+          continue
+        }
+
+      }
+
     }
-  }else{
+  } else {
     for (let attr of context.csvFile.get.body) {
-      xValues.push(attr[chartOps.xAxis.get]);
-      let val = attr[chartOps.yAxis.get]
-      if(isNaN(parseFloat(val))){
-        continue
+      let xValue = attr[chartOps.xAxis.get]
+      if(xValue){
+        xValues.push(attr[chartOps.xAxis.get]);
       } else{
-        yValues.push(val);
+        continue
       }
       
+      let val = attr[chartOps.yAxis.get]
+      if (isNaN(parseFloat(val))) {
+        continue
+      } else {
+        if (val) {
+          yValues.push(val);
+        } else {
+          continue
+        }
+
+      }
+
     }
   }
 

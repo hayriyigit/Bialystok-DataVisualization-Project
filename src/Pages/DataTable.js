@@ -63,6 +63,8 @@ const DataTable = () => {
     },
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
+    minSpareRows: 100,
+    minSpareCols: 2
   };
 
   const saveFile = () =>{

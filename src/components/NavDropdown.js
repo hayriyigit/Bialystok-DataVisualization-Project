@@ -13,12 +13,14 @@ const NavDropdown = (props) => {
     setShow((prevState) => !prevState);
   };
   const handleModal = (e) => {
-    if(e.target.id === "Save"){
-      props.saveFile()
-    } else if(e.target.id === "New"){
-      history.push("/");
-      dataContext.csvFile.set(undefined)
+    if (e) {
+      if (e.target.id === "Save") {
+        props.saveFile()
+      } else if (e.target.id === "New") {
+        history.push("/");
+        dataContext.csvFile.set(undefined)
 
+      }
     }
     setChartType(e ? e.target.id : chartType);
     setModal(prevState => !prevState);
@@ -42,7 +44,7 @@ const NavDropdown = (props) => {
         modal={modal}
         chartType={chartType}
         toggleModal={handleModal}
-       />
+      />
     </div>
   );
 };

@@ -19,7 +19,7 @@ const PieChart = (props) => {
   let nullObj = {}
   if (context.filterData.get.data) {
     let indexOfHeader = null
-    
+
     for (let attr of context.filterData.get.headers) {
       if (attr === chartOps.xAxis.get) {
         indexOfHeader = context.filterData.get.headers.indexOf(chartOps.xAxis.get)
@@ -30,10 +30,16 @@ const PieChart = (props) => {
       let arrOfKeys = Object.keys(nullObj)
       if (!arrOfKeys.includes(attrBody[indexOfHeader])) {
         let val = attrBody[indexOfHeader]
-        nullObj[val] = 1
-        xValues.push(attrBody[indexOfHeader]);
+        if (val) {
+          nullObj[val] = 1
 
-      } else {  
+          xValues.push(attrBody[indexOfHeader]);
+        } else {
+          continue
+        }
+
+
+      } else {
         let value = nullObj[attrBody[indexOfHeader]]
         value += 1
         let key = attrBody[indexOfHeader]
@@ -45,8 +51,14 @@ const PieChart = (props) => {
       let arrOfKeys = Object.keys(nullObj)
       if (!arrOfKeys.includes(attr[chartOps.xAxis.get])) {
         let val = attr[chartOps.xAxis.get]
-        nullObj[val] = 1
-        xValues.push(attr[chartOps.xAxis.get]);
+        if (val) {
+          nullObj[val] = 1
+
+          xValues.push(attr[chartOps.xAxis.get]);
+        } else {
+          continue
+        }
+
 
       } else {
         let value = nullObj[attr[chartOps.xAxis.get]]
