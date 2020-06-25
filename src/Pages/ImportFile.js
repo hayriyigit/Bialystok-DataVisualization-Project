@@ -9,9 +9,12 @@ const ImportFile = () => {
   const dataTypes = () => {
     let columns = {};
     if (context.options.get.header) {
-      for (let header of context.csvFile.get.head) {
-        columns[header] = { data: header, type: "text" };
+      if(context.csvFile.get){
+        for (let header of context.csvFile.get.head) {
+          columns[header] = { data: header, type: "text" };
+        }
       }
+      
     }
     context.columns.set(columns);
   };

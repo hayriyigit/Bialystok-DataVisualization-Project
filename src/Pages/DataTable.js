@@ -58,15 +58,20 @@ const DataTable = () => {
         headers: headers,
         data: dataRows,
       };
-
+      
       await context.filterData.set(filteredDataArr);
     },
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
   };
+
+  const saveFile = () =>{
+    const exportPlugin = hotInstance.getPlugin('exportFile');
+    exportPlugin.downloadFile('csv', {filename: 'MyFile'});
+  }
   return (
     <div>
-      <Navbar data={settings.data} headers={settings.colHeaders} />
+      <Navbar saveFile={saveFile} data={settings.data} headers={settings.colHeaders} />
       <HotTable ref={hotRef} settings={settings} />
     </div>
   );
