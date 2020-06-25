@@ -11,10 +11,10 @@ const PieChartForm = (props) => {
     <Fragment>
       <form className="form-horizontal">
         <fieldset>
-          <legend>Form Name</legend>
+          <legend>Pie chart</legend>
           <div className="form-group">
             <label className="col-md-4 control-label" htmlFor="selectbasic">
-              Attribute
+            Select a categorical variable
             </label>
             <div className="col-md-4">
               <select
@@ -25,8 +25,9 @@ const PieChartForm = (props) => {
                   chartOps.xAxis.set(e.target.value)
                 }}
               >
+                <option disabled selected hidden>Select a categorical variable to plot</option>
                 {context.csvFile.get.head.map((header) => (
-                  <option key={header} value={header}>{header}</option>
+                  <option defaultValue={header} value={header} key={header}>{header}</option>
                 ))}
               </select>
             </div>

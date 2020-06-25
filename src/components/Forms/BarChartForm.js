@@ -11,10 +11,10 @@ const BarChartForm = (props) => {
     <Fragment>
       <form className="form-horizontal">
         <fieldset>
-          <legend>Chart form</legend>
+          <legend>Bar chart</legend>
           <div className="form-group">
             <label className="col-md-4 control-label" htmlFor="selectbasic">
-              X Axis
+              Select a categorical variable for X Axis 
             </label>
             <div className="col-md-4">
               <select
@@ -25,6 +25,7 @@ const BarChartForm = (props) => {
                   chartOps.xAxis.set(e.target.value)
                 }}
               >
+                <option disabled selected hidden>Select a categorical variable to plot</option>
                 {context.csvFile.get.head.map((header) => (
                   <option key={header} value={header}>{header}</option>
                 ))}
@@ -34,17 +35,18 @@ const BarChartForm = (props) => {
 
           <div className="form-group">
             <label className="col-md-4 control-label" htmlFor="selectbasic">
-              Y Axis
+            Select a numerical variable for Y Axis 
             </label>
+
             <div className="col-md-4">
               <select
-                id="selectbasic"
                 name="selectbasic"
                 className="form-control"
                 onChange={(e) => {
                   chartOps.yAxis.set(e.target.value)
                 }}
               >
+                <option disabled selected hidden>Select a number variable to plot</option>
                 {context.csvFile.get.head.map((header) => (
                   <option key={header} value={header}>{header}</option>
                 ))}

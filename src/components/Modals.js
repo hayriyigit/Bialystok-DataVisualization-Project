@@ -13,7 +13,7 @@ export const BarChartModal = (props) => {
   return (
     <Modal show={props.modal} onHide={props.toggleModal}>
       <ModalHeader>
-        <ModalTitle>Bar Chart</ModalTitle>
+        <ModalTitle>Bar chart</ModalTitle>
       </ModalHeader>
       <ModalBody>
         
@@ -29,10 +29,9 @@ export const BarChartModal = (props) => {
 export const HistogramModal = (props) => (
   <Modal show={props.modal} onHide={props.toggleModal}>
     <ModalHeader>
-      <ModalTitle>Histogram chart settings</ModalTitle>
+      <ModalTitle>Histogram chart</ModalTitle>
     </ModalHeader>
     <ModalBody>
-    <h5>Choose a categorical variable!</h5>
       <div>
           <HistogramForm onHide={props.toggleModal}/>
       </div>
@@ -45,7 +44,7 @@ export const LineChartModal = (props) => {
   return (
     <Modal show={props.modal} onHide={props.toggleModal}>
       <ModalHeader>
-        <ModalTitle>Line chart settings</ModalTitle>
+        <ModalTitle>Line chart</ModalTitle>
       </ModalHeader>
       <ModalBody>
         
@@ -61,7 +60,7 @@ export const LineChartModal = (props) => {
 export const PieChartModal = (props) => (
   <Modal show={props.modal} onHide={props.toggleModal}>
     <ModalHeader>
-      <ModalTitle>Pie chart settings</ModalTitle>
+      <ModalTitle>Pie chart</ModalTitle>
     </ModalHeader>
     <ModalBody>
       

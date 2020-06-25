@@ -11,10 +11,10 @@ const HistChartForm = (props) => {
     <Fragment>
       <form className="form-horizontal">
         <fieldset>
-          <legend>Histogram chart settings</legend>
+          <legend>Histogram chart</legend>
           <div className="form-group">
             <label className="col-md-4 control-label" htmlFor="selectbasic">
-              Attribute
+            Select a categorical variable
             </label>
             <div class="col-md-4">
               <select
@@ -25,6 +25,7 @@ const HistChartForm = (props) => {
                   chartOps.catVars.set(e.target.value)
                 }}
               >
+                <option disabled selected hidden>Select a categorical variable to plot</option>
                 {context.csvFile.get.head.map((header) => (
                   <option key={header} value={header}>{header}</option>
                 ))}

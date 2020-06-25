@@ -25,12 +25,25 @@ const BarChart = (props) => {
     let header = context.filterData.get.headers
     for(let i = 0; i < data.length; i++){
       xValues.push(column(data,header.indexOf(chartOps.xAxis.get))[i][0])
-      yValues.push(column(data,header.indexOf(chartOps.yAxis.get))[i][0])
+      let val = column(data,header.indexOf(chartOps.yAxis.get))[i][0]
+      
+      if(isNaN(parseFloat(val))){
+        continue
+      } else{
+        yValues.push(column(val))
+      }
+      
     }
   }else{
     for (let attr of context.csvFile.get.body) {
       xValues.push(attr[chartOps.xAxis.get]);
-      yValues.push(attr[chartOps.yAxis.get]);
+      let val = attr[chartOps.yAxis.get]
+      if(isNaN(parseFloat(val))){
+        continue
+      } else{
+        yValues.push(val);
+      }
+      
     }
   }
 
@@ -43,7 +56,7 @@ const BarChart = (props) => {
       }}
     >
       <ModalHeader>
-        <ModalTitle>Bar chart settings</ModalTitle>
+        <ModalTitle>Bar chart</ModalTitle>
       </ModalHeader>
       <ModalBody>
         Some Chart Settings

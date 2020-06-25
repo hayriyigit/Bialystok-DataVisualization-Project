@@ -11,10 +11,10 @@ const LineChartForm = (props) => {
     <Fragment>
       <form className="form-horizontal">
         <fieldset>
-          <legend>Line chart plot</legend>
+          <legend>Line chart</legend>
           <div className="form-group">
             <label className="col-md-4 control-label" htmlFor="selectbasic">
-              Attribute
+              Select a numerical attribute
             </label>
             <div className="col-md-4">
               <select
@@ -25,9 +25,11 @@ const LineChartForm = (props) => {
                   chartOps.catVars.set(e.target.value)
                 }}
               >
+                <option disabled selected hidden>Select a numerical variable to plot</option>
                 {context.csvFile.get.head.map((header) => (
-                  <option value={header} key={header}>{header}</option>
+                  <option defaultValue={header} value={header} key={header}>{header}</option>
                 ))}
+
               </select>
             </div>
           </div>

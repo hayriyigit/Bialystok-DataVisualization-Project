@@ -11,10 +11,10 @@ const HistogramForm = () => {
     <Fragment>
       <form className="form-horizontal">
         <fieldset>
-          <legend>Chart form</legend>
+          <legend>Histogram chart</legend>
           <div className="form-group">
             <label className="col-md-4 control-label" htmlFor="selectbasic">
-              X Axis
+            Select a categorical variable
             </label>
             <div className="col-md-4">
               <select
@@ -25,6 +25,7 @@ const HistogramForm = () => {
                   chartOps.xAxis.set(e.target.value)
                 }}
               >
+                <option disabled selected hidden>Select a categorical variable to plot</option>
                 {context.csvFile.get.head.map((header) => (
                   <option value={header} key={header}>{header}</option>
                 ))}
@@ -50,7 +51,7 @@ const HistogramForm = () => {
           </div>
         </fieldset>
       </form>
-      
+
       {chartOps.isPlot.get ? <HistogramChart modal={true} /> : null}
     </Fragment>
   );

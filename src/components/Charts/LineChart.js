@@ -20,7 +20,12 @@ const LineChart = (props) => {
   const chartOps = useContext(ChartContext);
 
   for (let attr of context.csvFile.get.body) {
-    data.push(attr[chartOps.catVars.get]);
+    let val = parseFloat(attr[chartOps.catVars.get])
+    if(isNaN(val)){
+      continue
+    } else{
+      data.push(val);
+    }
   }
 
   return (
