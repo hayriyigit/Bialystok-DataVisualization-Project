@@ -6,9 +6,10 @@ import { DataContext } from "../context/DataContext";
 
 
 const DataTable = () => {
-  const context = useContext(DataContext);
   const history = useHistory();
   const hotRef = createRef();
+  const context = useContext(DataContext);
+  
 
   const [hotInstance, setHotInstance] = useState(null);
 
@@ -49,6 +50,7 @@ const DataTable = () => {
     columns: Object.values(columns),
     rowHeaders: true,
     dropdownMenu: true,
+    contextMenu: true,
     height: vh,
     width: vw,
     afterFilter: async (result) => {
@@ -63,8 +65,9 @@ const DataTable = () => {
     },
     filters: true,
     licenseKey: "non-commercial-and-evaluation",
-    minSpareRows: 100,
-    minSpareCols: 2
+    bindRowsWithHeaders: 'strict'
+    // minSpareRows: 100,
+    // minSpareCols: 2
   };
 
   const saveFile = () =>{

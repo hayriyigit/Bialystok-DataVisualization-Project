@@ -1,3 +1,5 @@
+import roundMe from '../Tools/Utils';
+
 var marginTop = 150;
 var marginLeft = 40;
 var graphWidth = 900;
@@ -42,7 +44,7 @@ export default function sketch(p) {
     p.textAlign(p.CENTER, p.CENTER);
 
     for (let t = 0; t <= 10; t += 1) {
-      yTick = p.map(t, 0, 10, 0, Math.max(...yAxis));
+      yTick = roundMe(p.map(t, 0, 10, 0, Math.max(...yAxis)),2);
       p.stroke(0)
       p.line(
         marginLeft + 50 - 5,
