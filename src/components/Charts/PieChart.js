@@ -59,7 +59,6 @@ const PieChart = (props) => {
           continue
         }
 
-
       } else {
         let value = nullObj[attr[chartOps.xAxis.get]]
         value += 1
@@ -68,6 +67,7 @@ const PieChart = (props) => {
       }
 
     }
+    
   }
 
   return (
