@@ -13,7 +13,6 @@ Project done for Data Visualization course at Bialystok University of Technology
 
 ## Contribuitors:
  * Hayri Yigit
- * Ali Firat Demirbas
  * Francisco Molina Jimenez
 
 
