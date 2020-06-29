@@ -88,8 +88,7 @@ const PieChart = (props) => {
             sketch={PieSketch}
             dataX={xValues}
             jsonObject={nullObj}
-            labelX={chartOps.xAxis.get}
-            labelY={chartOps.yAxis.get}
+            label={chartOps.xAxis.get}
             color={(255, 0, 0)}
           ></P5Wrapper>
         </div>
