@@ -5,7 +5,6 @@ import { DataContext } from "../../context/DataContext";
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 
 import P5Wrapper from "react-p5-wrapper";
@@ -20,10 +19,10 @@ const LineChart = (props) => {
   const chartOps = useContext(ChartContext);
 
   for (let attr of context.csvFile.get.body) {
-    let val = parseFloat(attr[chartOps.catVars.get])
-    if(isNaN(val)){
-      continue
-    } else{
+    let val = parseFloat(attr[chartOps.catVars.get]);
+    if (isNaN(val)) {
+      continue;
+    } else {
       data.push(val);
     }
   }
@@ -40,7 +39,6 @@ const LineChart = (props) => {
         <ModalTitle>BarChart</ModalTitle>
       </ModalHeader>
       <ModalBody>
-        Some Chart Settings
         <div>
           <P5Wrapper
             sketch={LineSketch}
@@ -50,7 +48,6 @@ const LineChart = (props) => {
           ></P5Wrapper>
         </div>
       </ModalBody>
-      <ModalFooter>Click outside this window to close it</ModalFooter>
     </Modal>
   );
 };

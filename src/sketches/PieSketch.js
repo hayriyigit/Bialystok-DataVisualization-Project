@@ -15,7 +15,7 @@ export default function sketch(p) {
   p.draw = () => {
     p.background(200);
     p.textSize(20);
-    p.text(`${label} Pie Chart`, p.width / 2 - 50, 30);
+    p.text(`Pie Chart for variable: ${label}`, p.width / 2 - 50, 30);
     p.textSize(15);
     for (var i = 0; i < keys.length; i++) {
       p.fill(piecolor[i]);

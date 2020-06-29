@@ -2,7 +2,6 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 import BarChartForm from "./Forms/BarChartForm";
 import HistogramForm from "./Forms/HistogramForm";
@@ -16,12 +15,10 @@ export const BarChartModal = (props) => {
         <ModalTitle>Bar chart</ModalTitle>
       </ModalHeader>
       <ModalBody>
-        
         <div>
-          <BarChartForm onHide={props.toggleModal}/>
+          <BarChartForm onHide={props.toggleModal} />
         </div>
       </ModalBody>
-      <ModalFooter>Click outside this window to close it.</ModalFooter>
     </Modal>
   );
 };
@@ -33,10 +30,9 @@ export const HistogramModal = (props) => (
     </ModalHeader>
     <ModalBody>
       <div>
-          <HistogramForm onHide={props.toggleModal}/>
+        <HistogramForm onHide={props.toggleModal} />
       </div>
     </ModalBody>
-    <ModalFooter>Click outside this window to close it.</ModalFooter>
   </Modal>
 );
 
@@ -47,12 +43,10 @@ export const LineChartModal = (props) => {
         <ModalTitle>Line chart</ModalTitle>
       </ModalHeader>
       <ModalBody>
-        
         <div>
           <LineChartForm onHide={props.toggleModal} />
         </div>
       </ModalBody>
-      <ModalFooter>Click outside this window to close it.</ModalFooter>
     </Modal>
   );
 };
@@ -63,11 +57,9 @@ export const PieChartModal = (props) => (
       <ModalTitle>Pie chart</ModalTitle>
     </ModalHeader>
     <ModalBody>
-      
       <div>
         <PieChartForm onHide={props.toggleModal} />
       </div>
     </ModalBody>
-    <ModalFooter>Click outside this window to close it.</ModalFooter>
   </Modal>
 );
